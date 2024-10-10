@@ -20,11 +20,11 @@ headers := make(http.Header)
 headers.Set("Some-Common-Header", "value-for-all-requests")
 
 client := webs.NewBuilder().
-	    SetHeaders(headers).
-        SetConnectionTimeout(2 * time.Second).
-	    SetResponseTimeout(3 * time.Second).
-        SetUserAgent("Your-User-Agent").
-	    Build()
+	SetHeaders(headers).
+	SetConnectionTimeout(2 * time.Second).
+	SetResponseTimeout(3 * time.Second).
+	SetUserAgent("Your-User-Agent").
+	Build()
 ```
 ### GET
 
