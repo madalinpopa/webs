@@ -122,9 +122,6 @@ func (cb *ClientBuilder) getMaxIdleConnsPerHost() int {
 
 // getTransport configures and returns an *http.Transport with custom timeout settings and connection limits.
 func (cb *ClientBuilder) getTransport() *http.Transport {
-	if cb.disableTimeouts {
-
-	}
 	return &http.Transport{
 		MaxIdleConnsPerHost:   cb.getMaxIdleConnsPerHost(),
 		ResponseHeaderTimeout: cb.getResponseTimeout(),
