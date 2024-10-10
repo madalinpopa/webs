@@ -1,5 +1,8 @@
 # Webs
 
+![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/madalinpopa/webs)
+
+
 This is a simple HTTP client that can be used to send HTTP requests to a server
 and receive the response. The client is implemented in Go and uses the standard
 library.
