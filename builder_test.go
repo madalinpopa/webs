@@ -6,6 +6,7 @@ import (
 	"time"
 )
 
+// TestClientBuilderDefaultOptions validates that the ClientBuilder initializes with the correct default configuration values.
 func TestClientBuilderDefaultOptions(t *testing.T) {
 
 	builder := NewClientBuilder()
@@ -35,6 +36,7 @@ func TestClientBuilderDefaultOptions(t *testing.T) {
 	})
 }
 
+// TestClientBuilderWithDefaultOptions tests that the ClientBuilder correctly applies default options for connection and response timeouts, as well as the max number of idle connections per host.
 func TestClientBuilderWithDefaultOptions(t *testing.T) {
 
 	builder := NewClientBuilder().
@@ -63,6 +65,7 @@ func TestClientBuilderWithDefaultOptions(t *testing.T) {
 
 }
 
+// TestClientCreationWithCustomHeaders verifies the creation of an HTTP client with custom headers using ClientBuilder.
 func TestClientCreationWithCustomHeaders(t *testing.T) {
 
 	headers := make(http.Header)
@@ -84,6 +87,7 @@ func TestClientCreationWithCustomHeaders(t *testing.T) {
 
 }
 
+// TestClientBuilder_DisabledTimeouts verifies the behavior of ClientBuilder when timeouts are disabled.
 func TestClientBuilder_DisabledTimeouts(t *testing.T) {
 	builder := NewClientBuilder().DisableTimeouts(true)
 	if builder == nil {
