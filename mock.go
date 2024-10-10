@@ -34,3 +34,9 @@ type RoundTripFunc func(req *http.Request) *Response
 func (f RoundTripFunc) RoundTrip(req *http.Request) (*Response, error) {
 	return f(req), nil
 }
+
+type MockBuilder struct{}
+
+func (mb *MockBuilder) Build() *Mock {
+	return &Mock{}
+}
