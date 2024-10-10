@@ -19,7 +19,7 @@ import "github.com/madalinpopa/webs"
 headers := make(http.Header)
 headers.Set("Some-Common-Header", "value-for-all-requests")
 
-client := webs.NewBuilder().
+client := webs.NewClientBuilder().
 	SetHeaders(headers).
 	SetConnectionTimeout(2 * time.Second).
 	SetResponseTimeout(3 * time.Second).
