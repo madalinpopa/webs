@@ -10,12 +10,12 @@ func GetDeckOfCards() (*DeckOfCards, error) {
 
 	response, err := client.Get(url, nil)
 	if err != nil {
-		return &DeckOfCards{}, err
+		return nil, err
 	}
 
 	var deck DeckOfCards
 	if err := response.UnmarshalJson(&deck); err != nil {
-		return &DeckOfCards{}, err
+		return nil, err
 	}
 
 	return &deck, nil
