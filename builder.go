@@ -21,11 +21,18 @@ const (
 // Builder defines an interface for constructing RequestHandler objects with configurable HTTP client settings.
 type Builder interface {
 	Build() RequestHandler
-	SetHeaders(headers http.Header) *ClientBuilder
-	DisableTimeouts(disable bool) *ClientBuilder
-	SetConnectTimeout(timeout time.Duration) *ClientBuilder
-	SetResponseTimeout(timeout time.Duration) *ClientBuilder
-	SetMaxIdleConnectionsPerHost(maxIdleConnsPerHost int) *ClientBuilder
+}
+
+// Transporter defines an interface for obtaining an *http.Transport instance.
+type Transporter interface {
+	getTransport() *http.Transport
+}
+
+// DefaultsRetriever defines methods for retrieving default configuration values like connection timeout, response timeout, and max idle connections.
+type DefaultsRetriever interface {
+	getConnectionTimeout() time.Duration
+	getResponseTimeout() time.Duration
+	getMaxIdleConnsPerHost() int
 }
 
 // ClientBuilder assists in creating customized HTTP clients by configuring headers, timeouts, and connection limits.
