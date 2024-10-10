@@ -5,6 +5,8 @@ import (
 	"testing"
 )
 
+// Test_addHeaders verifies that the addHeaders function correctly adds new headers to the existing headers.
+// It checks whether the Content-Type and Authorization headers are properly set after invocation of addHeaders.
 func Test_addHeaders(t *testing.T) {
 	headers := make(http.Header)
 	headers.Add("Content-Type", "application/json")
@@ -21,6 +23,7 @@ func Test_addHeaders(t *testing.T) {
 	}
 }
 
+// Test_mergeHeaders tests the mergeHeaders function by checking if headers from both input sets are present in the result.
 func Test_mergeHeaders(t *testing.T) {
 	headers := make(http.Header)
 	headers.Add("Content-Type", "application/json")
@@ -36,6 +39,7 @@ func Test_mergeHeaders(t *testing.T) {
 	}
 }
 
+// Test_getRequestBody tests the getRequestBody function for different content types and request bodies.
 func Test_getRequestBody(t *testing.T) {
 
 	t.Run("nobBodyNilResponse", func(t *testing.T) {
