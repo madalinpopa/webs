@@ -1,3 +1,3 @@
-module github.com/madalinpopa/httpclient
+module github.com/madalinpopa/webs
 
 go 1.23.2
