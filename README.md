@@ -1,6 +1,6 @@
 # Webs
 
-![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/madalinpopa/webs)
+![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/madalinpopa/webs) [![Test](https://github.com/madalinpopa/webs/actions/workflows/test.yml/badge.svg)](https://github.com/madalinpopa/webs/actions/workflows/test.yml)
 
 
 This is a simple HTTP client that can be used to send HTTP requests to a server
