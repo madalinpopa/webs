@@ -52,6 +52,5 @@ func GetDeckOfCards() (*DeckOfCards, error) {
 
     return &deck, nil
 }
-
 ```
 
