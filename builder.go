@@ -20,10 +20,10 @@ const (
 
 // Builder defines an interface for constructing RequestHandler objects with configurable HTTP client settings.
 type Builder interface {
-	Build() RequestHandler
+	Build() *Client
 }
 
-// Transporter defines an interface for obtaining an *http.Transport instance.
+// Transporter defines an interface for getting an *http.Transport instance.
 type Transporter interface {
 	getTransport() *http.Transport
 }
@@ -38,10 +38,10 @@ type DefaultsRetriever interface {
 // ClientBuilder assists in creating customized HTTP clients by configuring headers, timeouts, and connection limits.
 type ClientBuilder struct {
 	headers             http.Header
-	disableTimeouts     bool
+	transport           http.Transport
 	connectTimeout      time.Duration
 	responseTimeout     time.Duration
-	transport           http.Transport
+	disableTimeouts     bool
 	maxIdleConnsPerHost int
 }
 
@@ -60,8 +60,8 @@ func (cb *ClientBuilder) Build() *Client {
 		Timeout:   cb.getConnectionTimeout(),
 	}
 	client := &Client{
-		builder: cb,
 		client:  baseClient,
+		headers: cb.headers,
 	}
 
 	return client
