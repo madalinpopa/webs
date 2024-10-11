@@ -1,4 +1,4 @@
-package webs
+package utils
 
 import (
 	"encoding/json"
@@ -16,8 +16,8 @@ const (
 	ContentTypeXML = "application/xml"
 )
 
-// mergeHeaders merges two sets of HTTP headers into a new http.Header object.
-func mergeHeaders(headers http.Header, newHeaders http.Header) http.Header {
+// MergeHeaders merges two sets of HTTP headers into a new http.Header object.
+func MergeHeaders(headers http.Header, newHeaders http.Header) http.Header {
 	result := make(http.Header)
 	addHeaders(result, headers)
 	addHeaders(result, newHeaders)
@@ -36,9 +36,9 @@ func addHeaders(headers http.Header, newHeaders http.Header) {
 	}
 }
 
-// getRequestBody marshals the given body into a byte slice based on the provided content type.
+// GetRequestBody marshals the given body into a byte slice based on the provided content type.
 // Supports both JSON and XML content types, defaults to JSON if a content type is unrecognized.
-func getRequestBody(contentType string, body interface{}) ([]byte, error) {
+func GetRequestBody(contentType string, body interface{}) ([]byte, error) {
 
 	if body == nil {
 		return nil, nil

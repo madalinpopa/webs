@@ -3,6 +3,7 @@ package webs
 import (
 	"bytes"
 	"errors"
+	"github.com/madalinpopa/webs/internal/utils"
 	"io"
 	"net/http"
 )
@@ -15,9 +16,9 @@ type Client struct {
 
 // ExecuteRequest sends an HTTP request with the specified method, URL, headers, and body, then returns the response.
 func (c *Client) ExecuteRequest(method, url string, headers http.Header, body interface{}) (*Response, error) {
-	allHeaders := mergeHeaders(c.headers, headers)
+	allHeaders := utils.MergeHeaders(c.headers, headers)
 
-	requestBody, err := getRequestBody(allHeaders.Get("Content-Type"), body)
+	requestBody, err := utils.GetRequestBody(allHeaders.Get("Content-Type"), body)
 	if err != nil {
 		return nil, err
 	}

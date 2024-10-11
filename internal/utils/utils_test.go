@@ -1,4 +1,4 @@
-package webs
+package utils
 
 import (
 	"net/http"
@@ -23,14 +23,14 @@ func Test_addHeaders(t *testing.T) {
 	}
 }
 
-// Test_mergeHeaders tests the mergeHeaders function by checking if headers from both input sets are present in the result.
+// Test_mergeHeaders tests the MergeHeaders function by checking if headers from both input sets are present in the result.
 func Test_mergeHeaders(t *testing.T) {
 	headers := make(http.Header)
 	headers.Add("Content-Type", "application/json")
 	newHeaders := make(http.Header)
 	newHeaders.Add("Authorization", "Bearer 123")
 
-	results := mergeHeaders(headers, newHeaders)
+	results := MergeHeaders(headers, newHeaders)
 	if results.Get("Content-Type") != "application/json" {
 		t.Errorf("expected Content-Type to be application/json, got %s", results.Get("Content-Type"))
 	}
@@ -39,12 +39,12 @@ func Test_mergeHeaders(t *testing.T) {
 	}
 }
 
-// Test_getRequestBody tests the getRequestBody function for different content types and request bodies.
+// Test_getRequestBody tests the GetRequestBody function for different content types and request bodies.
 func Test_getRequestBody(t *testing.T) {
 
 	t.Run("nobBodyNilResponse", func(t *testing.T) {
 
-		body, err := getRequestBody("", nil)
+		body, err := GetRequestBody("", nil)
 
 		if err != nil {
 			t.Errorf("expected no error, got %s", err)
@@ -57,7 +57,7 @@ func Test_getRequestBody(t *testing.T) {
 	t.Run("bodyWithJsonResponse", func(t *testing.T) {
 		requestBody := []string{"foo", "bar"}
 
-		body, err := getRequestBody("application/json", requestBody)
+		body, err := GetRequestBody("application/json", requestBody)
 		if err != nil {
 			t.Errorf("expected no error, got %s", err)
 		}
@@ -70,7 +70,7 @@ func Test_getRequestBody(t *testing.T) {
 	t.Run("bodyWithXmlResponse", func(t *testing.T) {
 		requestBody := []string{"foo", "bar"}
 
-		body, err := getRequestBody("application/xml", requestBody)
+		body, err := GetRequestBody("application/xml", requestBody)
 		if err != nil {
 			t.Errorf("expected no error, got %s", err)
 		}
@@ -83,7 +83,7 @@ func Test_getRequestBody(t *testing.T) {
 	t.Run("defaultResponse", func(t *testing.T) {
 		requestBody := []string{"foo", "bar"}
 
-		body, err := getRequestBody("", requestBody)
+		body, err := GetRequestBody("", requestBody)
 		if err != nil {
 			t.Errorf("expected no error, got %s", err)
 		}
