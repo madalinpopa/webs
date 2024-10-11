@@ -53,6 +53,10 @@ func (c *Client) ExecuteRequest(method, url string, headers http.Header, body in
 	return &customResponse, nil
 }
 
+func (c *Client) Do(req *http.Request) (*Response, error) {
+	return c.ExecuteRequest(req.Method, req.URL.String(), req.Header, nil)
+}
+
 // Get sends an HTTP GET request to the specified URL with optional headers and returns the response.
 func (c *Client) Get(url string, headers http.Header) (*Response, error) {
 	return c.ExecuteRequest(http.MethodGet, url, headers, nil)
