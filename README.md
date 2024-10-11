@@ -26,7 +26,6 @@ client := webs.NewClientBuilder().
 	SetHeaders(headers).
 	SetConnectionTimeout(2 * time.Second).
 	SetResponseTimeout(3 * time.Second).
-	SetUserAgent("Your-User-Agent").
 	Build()
 ```
 ### GET
