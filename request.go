@@ -12,7 +12,7 @@ type RequestHandler interface {
 
 // Requester is an interface for making HTTP requests including Do, Get, Post, Put, Patch, and Delete methods.
 type Requester interface {
-	Do(req *http.Request) (*http.Response, error)
+	Do(req *http.Request) (*Response, error)
 	Get(url string, headers http.Header) (*Response, error)
 	Post(url string, headers http.Header, body interface{}) (*Response, error)
 	Put(url string, headers http.Header, body interface{}) (*Response, error)
