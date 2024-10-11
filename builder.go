@@ -7,7 +7,6 @@ import (
 )
 
 const (
-
 	// defaultResponseTimeout is the default duration to wait for a response before timing out in HTTP client requests.
 	defaultResponseTimeout = 0
 
