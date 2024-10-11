@@ -9,13 +9,13 @@ import (
 
 // Client represents a customizable HTTP client built with the help of ClientBuilder.
 type Client struct {
-	builder *ClientBuilder
 	client  *http.Client
+	headers http.Header
 }
 
 // ExecuteRequest sends an HTTP request with the specified method, URL, headers, and body, then returns the response.
 func (c *Client) ExecuteRequest(method, url string, headers http.Header, body interface{}) (*Response, error) {
-	allHeaders := mergeHeaders(c.builder.headers, headers)
+	allHeaders := mergeHeaders(c.headers, headers)
 
 	requestBody, err := getRequestBody(allHeaders.Get("Content-Type"), body)
 	if err != nil {
